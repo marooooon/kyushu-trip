@@ -13,6 +13,44 @@
 </head>
 <body>
 
+<!-- ===== PASSWORD GATE ===== -->
+<div id="password-gate">
+  <div class="gate-box">
+    <div class="gate-emoji">🚐🐾</div>
+    <h2>ふたりとコーラの九州旅</h2>
+    <p>パスワードを入力してください</p>
+    <div class="gate-input-wrap">
+      <input type="password" id="gate-input" placeholder="パスワード" autocomplete="off">
+      <button id="gate-btn">→</button>
+    </div>
+    <p id="gate-error" class="gate-error"></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const PASS = '0605';
+  const KEY  = 'kyushu_auth';
+  const gate = document.getElementById('password-gate');
+  if (sessionStorage.getItem(KEY) === '1') { gate.remove(); return; }
+  gate.style.display = 'flex';
+  function tryUnlock() {
+    if (document.getElementById('gate-input').value === PASS) {
+      sessionStorage.setItem(KEY, '1');
+      gate.classList.add('gate-fade-out');
+      setTimeout(() => gate.remove(), 400);
+    } else {
+      const err = document.getElementById('gate-error');
+      err.textContent = 'パスワードが違います';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  }
+  document.getElementById('gate-btn').addEventListener('click', tryUnlock);
+  document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+})();
+</script>
+
 <!-- ===== NAVIGATION ===== -->
 <nav>
   <a href="#concept">🌿 コンセプト</a>
