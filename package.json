@@ -1,0 +1,14 @@
+{
+  "name": "kyushu-trip",
+  "version": "1.0.0",
+  "description": "九州キャンピングカー旅しおりサイト",
+  "scripts": {
+    "dev": "concurrently --names \"server,images\" --prefix-colors \"green,cyan\" \"npx --yes live-server --port=3000\" \"node scripts/watch-images.js\"",
+    "preview": "npx --yes serve . --listen 3000",
+    "optimize": "node scripts/watch-images.js"
+  },
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^10.0.0"
+  }
+}

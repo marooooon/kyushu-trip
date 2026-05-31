@@ -1,0 +1,22 @@
+node_modules/
+
+# 元画像（重いので除外・images/opt/ の最適化済みJPGだけ管理）
+images/*.HEIC
+images/*.heic
+images/*.MP4
+images/*.mp4
+images/*.MOV
+images/*.mov
+images/*.JPG
+images/*.jpg
+!images/opt/
+
+# Claude Code 内部設定
+.claude/
+
+# 個人メモ・内部ドキュメント
+daijiro-memo.md
+review.md
+
+# macOS
+.DS_Store
